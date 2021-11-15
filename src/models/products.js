@@ -1,4 +1,5 @@
 import { getProducts } from "@/api/products";
+import { message } from 'antd';
 // import { appendParamToUrl } from "@/util";
 
 const initState = {
@@ -36,9 +37,7 @@ const products = {
         });
         // appendParamToUrl({ size, orderBy });
       } catch (error) {
-        window.alert(
-          (error.response && error.response?.data?.message) || error.message
-        );
+        message.error((error.response && error.response?.data?.message) || error.message);
       }
     },
   },

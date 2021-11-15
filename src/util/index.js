@@ -1,3 +1,4 @@
+import { message } from 'antd';
 export function addEventListener(target, eventType, cb, option) {
   let callback = cb;
 
@@ -84,7 +85,7 @@ export const initCarState = () => {
   try {
     return JSON.parse(str);
   } catch (error) {
-    window.alert("解析缓存失败！");
+    message.error("解析缓存失败！");
     return {
       items: [],
     };
