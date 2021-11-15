@@ -1,0 +1,186 @@
+.car {
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: -450px;
+  height: 100%;
+  display: flex;
+  transition: right 0.4s ease-in-out;
+}
+
+.car.show {
+  right: 0;
+}
+
+.car-icon-container {
+  position: relative;
+  height: 40px;
+}
+
+.badge {
+  position: absolute;
+  z-index: 2;
+  background-color: #eabf00;
+  color: #0c0b10;
+  font-size: 12px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 5px;
+  border-radius: 50%;
+  top: 70%;
+  left: 50%;
+  cursor: pointer;
+}
+
+.car-icon {
+  height: 52px;
+  width: 52px;
+  text-align: center;
+  line-height: 52px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car svg path {
+  fill: #fff;
+}
+
+.car-list {
+  width: 450px;
+  background-color: #1b1a20;
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+}
+
+.car-list .car-list-header {
+  box-sizing: border-box;
+  padding: 48px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 18px;
+}
+
+.car-list-header .car-list-text {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.car-list .list-content {
+  flex: 1 0 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.car-list .list-footer {
+  height: 200px;
+  padding: 8px;
+}
+
+.car-item {
+  display: flex;
+  color: #fff;
+  padding: 16px 8px;
+  border-top: 1px solid #000;
+  align-items: center;
+}
+
+.car-item.item-del {
+  background-color: #0c0b10;
+}
+
+.car-item.item-del .car-item-content p,
+.car-item.item-del .car-item-price p {
+  text-decoration: line-through;
+}
+
+.car-item-image {
+  width: 15%;
+}
+
+.car-item-image .image {
+  width: 100%;
+}
+
+.car-item .car-item-content {
+  width: 70%;
+  padding-left: 4px;
+}
+
+.car-item-content p {
+  margin: 0;
+}
+.car-item-content .car-item-title {
+  color: #ececec;
+}
+
+.car-item-content .car-item-desc {
+  color: #5b5a5e;
+}
+
+.car-item .car-item-price {
+  text-align: right;
+  width: 15%;
+}
+
+.car-item-price svg {
+  cursor: pointer;
+}
+
+.car-item-price .price {
+  margin-bottom: 8px;
+  color: #eabf00;
+}
+
+.car-item-price .item-btns button {
+  outline: none;
+  border: none;
+  height: 24px;
+  width: 24px;
+  line-height: 24px;
+  padding: 0;
+  margin-left: 4px;
+  border-radius: 2px;
+  background-color: #000;
+  color: #b7b7b7;
+  cursor: pointer;
+}
+
+.footer-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-item .text-align-right {
+  text-align: right;
+}
+
+.footer-item .footer-ins {
+  color: #5b5a5e;
+}
+
+.footer-item .footer-title {
+  font-size: 14px;
+  color: #5b5a5e;
+}
+
+.footer-item .footer-text {
+  font-size: 22px;
+  color: #eabf00;
+}
+
+.list-footer .checkout-btn {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #ececec;
+  font-size: 16px;
+  background-color: #000;
+  margin-top: 40px;
+  cursor: pointer;
+}
