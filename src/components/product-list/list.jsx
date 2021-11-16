@@ -22,7 +22,7 @@ function List({ data, onSelectChange, addToCart, orderBy = "" }) {
                   style={{ width: 200 }}
                   onChange={onSelectChange}
                 >
-                  <Option value="">Select</Option>
+                  <Option value="">Origin</Option>
                   <Option value="lowest">Lowest to highest</Option>
                   <Option value="highest">Highest to lowest</Option>
                 </Select>
