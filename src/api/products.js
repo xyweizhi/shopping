@@ -3,7 +3,7 @@ import { handleData, handleUrl } from "@/util";
 
 export const getProducts = (params) =>
   new Promise((resolve, reject) => {
-    handleUrl();
+    // handleUrl();
     axios
       .get(`${handleUrl()}data.json`)
       .then((res) => {
