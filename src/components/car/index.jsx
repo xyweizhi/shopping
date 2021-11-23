@@ -14,11 +14,28 @@ class Car extends Component {
     this.state = {
       expansion: false,
     };
-
+    this.divElement = null;
     this.handleIconClick = this.handleIconClick.bind(this);
+    this.outDivClickHandler = this.outDivClickHandler.bind(this);
+  }
+  outDivClickHandler(e) {
+    e.stopPropagation();
+    const target = e.target;
+    // 组件已挂载且事件触发对象不在div内
+    if (this.divElement && !this.divElement.contains(target)) {
+      this.setState({ expansion: false });
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.outDivClickHandler,false);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.outDivClickHandler,false);
   }
 
   handleIconClick() {
+    
     const { expansion } = this.state;
 
     this.setState({ expansion: !expansion });
@@ -34,7 +51,7 @@ class Car extends Component {
     const { car, addItem, removeItem, updateItem } = this.props;
     const total = countNumber(car.items);
     return (
-      <div key="car" className={`car ${expansion ? "show" : ""}`}>
+      <div ref={ node => this.divElement = node} key="car" className={`car ${expansion ? "show" : ""}`}>
         <div className="car-icon-container">
           <div className="car-icon" onClick={this.handleIconClick}>
             {expansion ? (
