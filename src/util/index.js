@@ -96,6 +96,10 @@ export const wrapSet = (data) => {
   window.localStorage.setItem("car_state", JSON.stringify(data));
   return data;
 };
+export const wrapSetAsync = async (params) => {
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  return params;
+};
 
 export const parseUrl = () => {
   const [base, urlParam] = window.location.hash.split("?");

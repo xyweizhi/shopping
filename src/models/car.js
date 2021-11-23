@@ -1,4 +1,5 @@
-import { addItemToList, initCarState, wrapSet } from "@/util";
+import { addItemToList, initCarState, wrapSet, wrapSetAsync } from "@/util";
+import { message } from 'antd';
 
 const initState = initCarState();
 
@@ -6,7 +7,7 @@ const car = {
   namespace: "car",
   state: initState,
   reducers: {
-    addToCart(state, { payload }) {
+    addToCartStatus(state, { payload }) {
       return wrapSet({
         ...state,
         items: addItemToList(state.items, payload.item),
@@ -39,6 +40,23 @@ const car = {
         items: [],
       });
     }
+  },
+  effects: {
+    *addToCart({ payload }, { call, put }) {
+      try {
+        let data = yield call(wrapSetAsync, payload);
+        yield put({
+          type: "addToCartStatus",
+          payload: {
+            item: data.item,
+          },
+        });
+        // appendParamToUrl({ size, orderBy });
+      } catch (error) {
+        console.log(error);
+        message.error((error.response && error.response?.data?.message) || error.message);
+      }
+    },
   },
 };
 
