@@ -51,7 +51,7 @@ export function addItemToList(items, item) {
   let d = items;
   let index = null;
   d.find((n, i) => {
-    if (n.sku === item.sku) {
+    if (n.sku === item.sku && n.sel == item.sel) {
       index = i;
       return true;
     }

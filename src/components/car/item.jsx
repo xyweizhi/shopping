@@ -55,6 +55,7 @@ export default class Item extends Component {
       quantity,
       currencyFormat,
       price,
+      sel,
     } = this.props;
 
     const { isHover } = this.state;
@@ -72,7 +73,7 @@ export default class Item extends Component {
         <div className="car-item-content">
           <p className="car-item-title">{title}</p>
           <p className="car-item-desc">
-            {availableSizes[0]} | {style}
+            {sel?sel:availableSizes[0]} | {style}
           </p>
           <p className="car-item-desc">Quantity: {quantity}</p>
         </div>

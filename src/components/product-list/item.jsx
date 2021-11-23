@@ -1,14 +1,24 @@
 import React, { Component } from "react";
-import { Col } from "antd";
+import { Col, Popover, List, Button } from "antd";
 import { formatCurrency } from "@/util";
 
 export default class Item extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
-  handleClick() {
+  state = {
+    visible: false,
+  };
+  handleVisibleChange = visible => {
+    this.setState({ visible });
+  };
+  handleClick = item_size => {
+    this.setState({
+      visible: false,
+    });
     const { onClick, ...item } = this.props;
+    item.sel = item_size;
     onClick && onClick(item);
   }
   render() {
@@ -16,7 +26,7 @@ export default class Item extends Component {
       this.props;
     return (
       <Col md={8} lg={6} span={6} className="margin-top-8">
-        <div className="list-item" onClick={this.handleClick}>
+        <div className="list-item" >
           <div>
             <img
               alt={title}
@@ -48,8 +58,44 @@ export default class Item extends Component {
             </div>
           </div>
 
-          <div className="item-button">add to cart</div>
+          <div className="item-button" >
+            <Popover
+              visible={this.state.visible}
+              onVisibleChange={this.handleVisibleChange}
+              content={
+                <List
+                  size="small"
+                  dataSource={availableSizes}
+                  renderItem={(item_size) => (
+                    <List.Item>
+                      <Button
+                        onClick={() => this.handleClick(item_size)}//{() => addToCart(item.id, item_size)}
+                        block
+                        style={{
+                          background: "black",
+                          color: "white",
+                          fontWeight: "600",
+                        }}
+                      >
+                        {item_size}
+                      </Button>
+                    </List.Item>
+                  )}
+                />
+              }
+              title="Please to select your size"
+              trigger="click"
+            >
+              <Button
+                size="large"
+                block
+                style={{ background: "black", color: "white", fontWeight: "600" }}
+              >
+                Add to cart
+              </Button>
+            </Popover></div>
         </div>
+
       </Col>
     );
   }
